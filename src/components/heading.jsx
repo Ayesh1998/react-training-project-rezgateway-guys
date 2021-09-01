@@ -1,14 +1,17 @@
+import {useParams} from "react-router-dom"
+
 function Heading(props) {
 
-    let heading = props.heading;
+    const {name,id} = useParams();
+    // let heading = props.heading;
 
     return (
         <div>
             <h1 className="test">
-                {heading}
+                {name}
             </h1>
             <h1 className="heading">
-                {heading}
+                {id}
             </h1>
             <p className="details">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
