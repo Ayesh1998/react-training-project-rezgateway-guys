@@ -1,18 +1,36 @@
 import './App.css';
-
-import Heading from "./components/heading";
+import {useState} from "react";
 
 function App() {
+
+    const [name, setName] = useState("Ayesh");
+    const [nameEmptyError, setNameEmptyError] = useState(false);
+
+    const handleName = (e) => {
+
+        if (e.target.value.length === 0) {
+            setNameEmptyError(true)
+            setName(e.target.value)
+            return;
+        }
+        setNameEmptyError(false)
+        setName(e.target.value)
+    }
+
+    const handleSave = () => {
+        console.log(name)
+    }
+
     return (
-        <div className="App" style={{fontStyle: "italic", fontSize: "10px"}}>
+        <div className="App" style={{fontSize: "20px"}}>
             <p className="test">
-                aaa
+                Input Fields
             </p>
-            <Heading heading="heading 1"/>
-            <hr/>
-            <Heading heading="heading 2"/>
-            <hr/>
-            <Heading heading="heading 3"/>
+            <label>
+                Name
+            </label>
+            <input type="text" value={name} onChange={handleName}/>
+            <button onClick={handleSave} disabled={nameEmptyError}> Save</button>
         </div>
     );
 }
